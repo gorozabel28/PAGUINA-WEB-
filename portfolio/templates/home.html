@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+<header class="row bg-black text-light p-4">
+    <div class="col-md-4 text-center">
+        <img src="{% static 'portfolio/profile3.png' %}" alt="Profile Picture" class="img-fluid rounded-circle">
+    </div>
+    <div class="col-md-8 my-auto">
+        <h1>Soy <strong>MIGUEL GOROZABEL</strong></h1>
+        <h2>Me considero programador en Proceso</h2>
+        <p>
+            Soy una persona apasionada por el campo de la informática. Me encanta aprender y asumir
+            nuevos retos y metas en mi vida. Disfruto cada oportunidad de crecimiento y me esfuerzo
+            por alcanzar todo mi potencial. La tecnología y la innovación son mi motor, y siempre
+            estoy en busca de conocimientos que me permitan mejorar y desarrollar nuevas habilidades.
+            Mi pasión por lo que hago me impulsa a dar lo mejor de mí en cada proyecto, y espero poder
+            seguir contando con oportunidades que me desafíen y me permitan seguir creciendo tanto profesional
+            como personalmente.
+        </p>
+        <a href="{% static 'portfolio/Curriclum Miguel G.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">
+            Download CV
+        </a>
+    </div>
+</header>
+<div class="row my-4 text-center">
+    <h1>PAGINA PRINCIPAL</h1>
+    {% for project in projects %}
+    <div class="col-md-4 p-4">
+        <div class="card bg-black text-light card-project">
+            <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top" />
+            <div class="card-body">
+                <h2>{{project.title}}</h2>
+                <p>{{project.description}}</p>
+                {% if project.url %}
+                <a href="{{project.url}}" class="btn btn-light rounded-0 btm-sm" target="_blank">
+                    {{project.url}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
