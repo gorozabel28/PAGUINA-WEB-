@@ -28,9 +28,11 @@ DEBUG = 'RENDER' not in os.environ
 # https://docs.djangoproject.com/en/4.2/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['your-app-name.onrender.com']
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 
 # Application definition
@@ -84,12 +86,10 @@ WSGI_APPLICATION = 'django_portfolio.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default=('postgres://dj_portfolio_01z5_user:ZRL4ewHzwWWmF1jx1R8GpwTJMAbIOnFM@dpg-cp58apgcmk4c73eu9g4g-a.oregon-postgres.render.com/dj_portfolio_01z5'),
+        default=os.environ.get('DATABASE_URL', 'postgres://dj_portfolio_01z5_user:ZRL4ewHzwWWmF1jx1R8GpwTJMAbIOnFM@dpg-cp58apgcmk4c73eu9g4g-a.oregon-postgres.render.com/dj_portfolio_01z5'),
         conn_max_age=600
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -128,12 +128,8 @@ USE_TZ = True
 # This setting tells Django at which URL static files are going to be served to the user.
 # Here, they well be accessible at your-domain.onrender.com/static/...
 STATIC_URL = '/static/'
-# Following settings only make sense on production and may break development environments.
-if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
+if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
@@ -142,7 +138,7 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cloudinary.config(
-      cloud_name = os.environ.get('dmwrqeejl'),
-      api_key = os.environ.get('677314917258729'),
-      api_secret = os.environ.get('b4UUHFkhFh_-N2FpXJ0TNgjAXi0'),
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
 )
