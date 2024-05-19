@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'django_portfolio.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default=os.environ.get('DATABASE_URL_EXTERNAL'),
+      default=os.environ.get('DATABASE_URL_EXTERNAL'),
         conn_max_age=600
     )
 }
