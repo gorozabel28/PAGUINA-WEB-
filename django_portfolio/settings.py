@@ -145,7 +145,7 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cloudinary.config(
-      cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
-      api_key = os.environ.get('CLOUDINARY_API_KEY'),
-      api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
+      cloud_name = os.environ.get('dmwrqeejl'),
+      api_key = os.environ.get('677314917258729'),
+      api_secret = os.environ.get('b4UUHFkhFh_-N2FpXJ0TNgjAXi0'),
 )
