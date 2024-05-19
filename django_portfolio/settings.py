@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'django_portfolio.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default= os.environ.get('DATEBASE_URL_EXTERNAL'),
+        default=('postgres://dj_portfolio_01z5_user:ZRL4ewHzwWWmF1jx1R8GpwTJMAbIOnFM@dpg-cp58apgcmk4c73eu9g4g-a.oregon-postgres.render.com/dj_portfolio_01z5'),
         conn_max_age=600
     )
 }
@@ -142,7 +142,7 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cloudinary.config(
-      cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
-      api_key = os.environ.get('CLOUDINARY_API_KEY'),
-      api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
+      cloud_name = os.environ.get('dmwrqeejl'),
+      api_key = os.environ.get('677314917258729'),
+      api_secret = os.environ.get('b4UUHFkhFh_-N2FpXJ0TNgjAXi0'),
 )
